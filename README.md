@@ -2,16 +2,23 @@
 
 ## Overview
 
-This project explores what features influence the price of used cars, using a single consolidated dataset for analysis. After building an initial model, the dataset was segmented by **fuel type** to better understand consumer valuation differences across:
+This project explores what features influence the price of used cars, using a single consolidated dataset. The dataset contains over **420K (originally)** used vehicle listings with information on:
 
-- **Gas**
-- **Diesel**
-- **Electric**
-- **Hybrid**
-- **Other**
+- Vehicle **price**
+- **Manufacturer**
+- **Fuel type** (gas, diesel, electric, hybrid, other)
+- **Condition** (new, like new, good, fair, salvage)
+- **Year**, **odometer reading**, **body type**, **paint color**
+- **Title status**, **transmission**, **drive type**, and more
 
-Each segment was analyzed using linear regression, and the resulting model coefficients were compared to determine which features most impact resale value in each fuel category.
+### Data Cleaning Summary
 
+To prepare the data for modeling:
+- **Missing or irrelevant values** were removed, especially rows with null prices or odometers.
+- **Categorical variables** (e.g., condition, manufacturer group, fuel type) were encoded for regression modeling.
+- Outliers and unrealistic entries (e.g., prices at or below $100 or odometer readings at zero) were filtered out.
+- The cleaned dataset was then segmented by **fuel type** to explore how pricing drivers vary across different kinds of vehicles.
+- The data after cleaning up ended up with 380K rows.
 ---
 
 ## Key Insights
@@ -25,7 +32,7 @@ Each segment was analyzed using linear regression, and the resulting model coeff
 - **Hatchbacks**, **mini-vans**, and **wagons** lower prices in most categories.
 
 ### 3. Manufacturer Group
-- **Luxury brands** (e.g., BMW, Ferrari, Tesla) command strong **price premiums**, particularly in **electric** and **hybrid** markets.
+- **Luxury brands** (e.g., BMW, Tesla, etc) command strong **price premiums**, particularly in **electric** and **hybrid** markets.
 - For **diesel vehicles**, luxury branding surprisingly shows a **negative effect**, possibly due to declining demand.
 
 ### 4. Transmission and Drive
@@ -35,7 +42,7 @@ Each segment was analyzed using linear regression, and the resulting model coeff
 
 ### 5. Cylinders (Not Applicable to Electric Vehicles)
 - In **gas** and **diesel** cars, **6- or 8-cylinder** engines positively influence price.
-- **Electric cars do not have cylinders**, and this feature was not relevant in their analysis.
+- **Electric cars do not have cylinders**, and this feature was excluded from their analysis.
 
 ### 6. Year and Odometer
 - **Newer vehicles** are consistently more valuable across all fuel types.
@@ -55,17 +62,11 @@ Used car dealerships should:
 - Prioritize **newer**, **well-maintained** vehicles from **luxury manufacturers**, especially in the electric and hybrid space.
 - Favor body types with high resale value (e.g., **pickup trucks** and **convertibles**).
 - Avoid vehicles with **high mileage**, **salvage titles**, or **low-demand types/colors**.
-- Use **fuel-type-specific insights** when sourcing inventory to align with consumer value drivers.
-
 ---
 
-## Files Included
+## Notebook
 
-- [`Final_PracticalApplication_Module11.ipynb`](https://github.com/your-username/your-repo-name/blob/main/Final_PracticalApplication_Module11.ipynb): Notebook with the complete analysis.
-- Regression coefficient summaries for each fuel type:
-  - `coef_summarygas.txt`
-  - `coef_summarydiesel.txt`
-  - `coef_summaryelectric.txt`
-  - `coef_summaryhybrid.txt`
-  - `coef_summaryother.txt`
+- 📘 View the full analysis in the Jupyter notebook:  
+  [`Final_PracticalApplication_Module11.ipynb`](https://github.com/msach05/caranalysis/blob/main/Final_PracticalApplication_Module11.ipynb)
+
 ---
